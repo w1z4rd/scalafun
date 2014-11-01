@@ -48,6 +48,11 @@ class AnagramsSuite extends FunSuite {
     val lad = List(('a', 1), ('d', 1), ('l', 1))
     assert(subtract(lard, r) === lad)
   }
+  
+  test("subtract: ok - ok") {
+    val ok = List(('o',1), ('k',1))
+    assert(subtract(ok, ok) === Nil)
+  }
 
 
 
@@ -70,7 +75,37 @@ class AnagramsSuite extends FunSuite {
     )
     assert(combinations(abba).toSet === abbacomb.toSet)
   }
-
+  
+  test("combinations: aaabbc"){
+    val aaabbc = List(('a',3), ('b',2), ('c',1))
+    val aaabbcComb = List(
+      List(),
+      List(('a',1)),
+      List(('a',2)),
+      List(('a',3)),
+      List(('b',1)),
+      List(('b',2)),
+      List(('c',1)),
+      List(('a',1), ('b',1)),
+      List(('a',2), ('b',1)),
+      List(('a',3), ('b',1)),
+      List(('a',1), ('b',2)),
+      List(('a',2), ('b',2)),
+      List(('a',3), ('b',2)),
+      List(('a',1), ('c',1)),
+      List(('a',2), ('c',1)),
+      List(('a',3), ('c',1)),
+      List(('b',1), ('c',1)),
+      List(('b',2), ('c',1)),
+      List(('a',1), ('b',1), ('c',1)),
+      List(('a',2), ('b',1), ('c',1)),
+      List(('a',3), ('b',1), ('c',1)),
+      List(('a',1), ('b',2), ('c',1)),
+      List(('a',2), ('b',2), ('c',1)),
+      List(('a',3), ('b',2), ('c',1))
+    )
+    assert(combinations(aaabbc).toSet === aaabbcComb.toSet)
+  }
 
 
   test("sentence anagrams: []") {
@@ -104,5 +139,4 @@ class AnagramsSuite extends FunSuite {
     )
     assert(sentenceAnagrams(sentence).toSet === anas.toSet)
   }  
-
 }
